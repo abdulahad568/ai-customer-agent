@@ -42,6 +42,8 @@ export interface RecentTicket {
   created_at: string;
 }
 
+const API_BASE_URL = "https://nexusops-backened.onrender.com";
+
 async function request<T>(url: string, options?: RequestInit): Promise<T> {
   const res = await fetch(url, options);
   const data = await res.json();
