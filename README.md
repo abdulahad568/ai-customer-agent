@@ -2,6 +2,11 @@
 
 A self-contained Express + React app powered by Groq AI.
 
+## 🚀 Live Deployment Links
+
+- **Frontend Application:** [https://nexusops-frontend.onrender.com](https://nexusops-frontend.onrender.com)
+- **Backend API Service:** [https://nexusops-backened.onrender.com](https://nexusops-backened.onrender.com)
+
 ## Requirements
 
 - Node.js 18+
