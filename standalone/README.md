@@ -2,6 +2,11 @@
 
 A self-contained Express + React app powered by Groq AI.
 
+## 🚀 Live Deployment Links
+
+- **Frontend Application:** [https://nexusops-frontend.onrender.com](https://nexusops-frontend.onrender.com)
+- **Backend API Service:** [https://nexusops-backened.onrender.com](https://nexusops-backened.onrender.com)
+
 ## Requirements
 
 - Node.js 18+
@@ -58,3 +63,5 @@ A self-contained Express + React app powered by Groq AI.
 - The SQLite database file (`database.sqlite`) is created automatically in the project root on first run.
 - No Postgres or external database needed.
 - The mock customer list is in `backend/src/data/customers.ts`.
+
+-
