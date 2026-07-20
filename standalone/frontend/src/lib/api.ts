@@ -52,14 +52,14 @@ async function request<T>(url: string, options?: RequestInit): Promise<T> {
 }
 
 export const submitTicket = (payload: TicketPayload) =>
-  request<TicketResult>("https://nexusops-backened.onrender.com/tickets", {
+  request<TicketResult>("https://nexusops-backened.onrender.com/api/tickets", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });
 
 export const getDashboardStats = () =>
-  request<DashboardStats>("https://nexusops-backened.onrender.com/dashboard/stats");
+  request<DashboardStats>("https://nexusops-backened.onrender.com/api/dashboard/stats");
 
 export const getRecentTickets = () =>
-  request<RecentTicket[]>("https://nexusops-backened.onrender.com/dashboard/recent");
+  request<RecentTicket[]>("https://nexusops-backened.onrender.com/api/dashboard/recent");
