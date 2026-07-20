@@ -46,9 +46,32 @@ const API_BASE_URL = "https://nexusops-backened.onrender.com";
 
 async function request<T>(url: string, options?: RequestInit): Promise<T> {
   const res = await fetch(url, options);
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.error ?? `Request failed (${res.status})`);
-  return data as T;
+  
+  // 1. If it's not a successful response, handle it safely without crashing on JSON parsing
+  if (!res.ok) {
+    let errorMsg = `Request failed (${res.status})`;
+    try {
+      const contentType = res.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        const errorData = await res.json();
+        errorMsg = errorData.error ?? errorMsg;
+      } else {
+        const textError = await res.text();
+        console.error("Non-JSON Error response:", textError);
+      }
+    } catch (e) {
+      // Fallback if parsing fails entirely
+    }
+    throw new Error(errorMsg);
+  }
+
+  // 2. Read the body safely
+  const contentType = res.headers.get("content-type");
+  if (!contentType || !contentType.includes("application/json")) {
+    throw new Error("Server did not return JSON data.");
+  }
+
+  return (await res.json()) as T;
 }
 
 export const submitTicket = (payload: TicketPayload) =>
